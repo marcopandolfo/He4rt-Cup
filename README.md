@@ -39,7 +39,7 @@ npm start
 
 ## ✌️ Contributions
 
-### contributions are 100% welcome, just make a PR or ISSUE :)
+Contributions are 100% welcome, just make a PR or ISSUE :)
 
 
 ## :mailbox_with_mail: License
