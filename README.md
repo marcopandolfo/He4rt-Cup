@@ -21,17 +21,13 @@ npm install
 
 :gear: Configure the file `.env-example` and rename to `.env`
 
-```
-npm run dev
-```
-
 :bulb: If you want to run this on `development` mode (recommended):
 
 ```
 npm run dev
 ```
 
-:bulb: Run this os `production` mode:
+:bulb: Or run this on  `production` mode:
 
 ```
 npm start
@@ -41,7 +37,7 @@ npm start
 ## :pushpin: Tips:
 - Install the extensions `editorconfig` and `eslint` in your IDE for make a better code
 
-# Contributions ✌️
+## ✌️ Contributions
 
 ### contributions are 100% welcome, just make a PR or ISSUE :)
 
