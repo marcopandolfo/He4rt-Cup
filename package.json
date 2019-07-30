@@ -1,0 +1,35 @@
+{
+  "name": "he4rt-cup",
+  "version": "1.0.0",
+  "description": "He4rt Cup api",
+  "main": "server.js",
+  "scripts": {
+    "start": "",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/marcopandolfo/He4rt-Cup"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "cup",
+    "he4rt"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  }
+}
