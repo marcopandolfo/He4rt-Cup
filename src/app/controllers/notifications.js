@@ -1,4 +1,4 @@
-const sendWhisper = require('../../TwitchSerivce/commands/sendWhisper');
+const sendWhisper = require('../../twitchService/commands/sendWhisper');
 
 module.exports = (app) => {
   app.post('/notifications/push-notifications', (req, res) => {

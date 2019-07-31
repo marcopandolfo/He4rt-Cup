@@ -6,7 +6,7 @@ function VotesDAO(connection) {
 VotesDAO.prototype.incrementVotes = function incrementVote(team, gameId) {
   return new Promise((resolve, reject) => {
     const aux = `${team}_votes`;
-    this._connection.query(`UPDATE game SET ${aux} = ${aux} + 1  WHERE id = ?`, [gameId], (err, result) => {
+    this._connection.query(`UPDATE game SET ${aux} = ${aux} + 1  WHERE game_id = ?`, [gameId], (err, result) => {
       if (err) return reject(err);
 
       return resolve(result);
@@ -16,7 +16,7 @@ VotesDAO.prototype.incrementVotes = function incrementVote(team, gameId) {
 
 VotesDAO.prototype.getVotes = function getVotes(gameId) {
   return new Promise((resolve, reject) => {
-    this._connection.query('SELECT red_votes, blue_votes from game WHERE id = ?', [gameId], (err, result) => {
+    this._connection.query('SELECT red_votes, blue_votes from game WHERE game_id = ?', [gameId], (err, result) => {
       if (err) return reject(err);
 
       return resolve(result[0]);
