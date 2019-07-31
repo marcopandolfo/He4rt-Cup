@@ -20,6 +20,16 @@ GameDAO.prototype.create = function create(game) {
   });
 };
 
+GameDAO.prototype.updateDescription = function updateDescription(description, gameId) {
+  return new Promise((resolve, reject) => {
+    this._connection.query('UPDATE game SET description = ? WHERE game_id = ?', [description, gameId], (err, result) => {
+      if (err) return reject(err);
+
+      return resolve(result);
+    });
+  });
+};
+
 // eslint-disable-next-line func-names
 module.exports = function () {
   return GameDAO;
