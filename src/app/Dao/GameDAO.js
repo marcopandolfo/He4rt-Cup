@@ -30,6 +30,26 @@ GameDAO.prototype.updateDescription = function updateDescription(description, ga
   });
 };
 
+GameDAO.prototype.updatePlayer = function updatePlayer(gameId, team, lang, player) {
+  return new Promise((resolve, reject) => {
+    this._connection.query(`UPDATE game SET player_${lang}_${team} = ? WHERE game_id = ?`, [player, gameId], (err, result) => {
+      if (err) return reject(err);
+
+      return resolve(result);
+    });
+  });
+};
+
+GameDAO.prototype.updateState = function updateState(gameId, state) {
+  return new Promise((resolve, reject) => {
+    this._connection.query('UPDATE game SET state = ? WHERE game_id = ?', [state, gameId], (err, result) => {
+      if (err) return reject(err);
+
+      return resolve(result);
+    });
+  });
+};
+
 // eslint-disable-next-line func-names
 module.exports = function () {
   return GameDAO;

@@ -30,4 +30,30 @@ module.exports = (app) => {
       .then(() => res.status(200).send())
       .catch(err => res.status(400).json(err));
   });
+
+  app.post('/game/updatePlayer', (req, res) => {
+    const {
+      game_id,
+      team, lang,
+      player,
+    } = req.body;
+
+    // TOOD: validate
+
+    getGameDao()
+      .updatePlayer(game_id, team, lang, player)
+      .then(() => res.status(200).send())
+      .catch(err => res.status(400).json(err));
+  });
+
+  app.post('/game/updateState', (req, res) => {
+    const { game_id, state } = req.body;
+
+    // TOOD: validate
+    getGameDao()
+      .updateState(game_id, state)
+      .then(() => res.status(200).send())
+      .catch(err => res.status(400).json(err));
+
+  });
 };
