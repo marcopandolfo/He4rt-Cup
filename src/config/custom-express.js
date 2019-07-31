@@ -12,12 +12,13 @@ app.use(bodyParser.json());
 
 // Define path
 let rootPath = 'src\\app';
-if (process.platform === 'win32') rootPath = 'src/app';
+if (process.platform === 'linux') rootPath = 'src/app';
 
 // Consign
 consign({ cwd: rootPath })
   .include('infra')
   .then('controllers')
+  .then('Dao')
   .into(app);
 
 module.exports = app;
