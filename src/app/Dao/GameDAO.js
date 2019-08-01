@@ -55,7 +55,7 @@ GameDAO.prototype.getGame = function getGame(gameId) {
     this._connection.query('SELECT * FROM game WHERE game_id = ?', [gameId], (err, result) => {
       if (err) return reject(err);
 
-      return resolve(result);
+      return resolve(result[0]);
     });
   });
 };

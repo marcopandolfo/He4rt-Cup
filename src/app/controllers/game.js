@@ -52,7 +52,10 @@ module.exports = (app) => {
 
     getGameDao()
       .getGame(gameId)
-      .then(game => res.status(200).json(game))
+      .then((game) => {
+        console.log('[GET GAME]');
+        return res.status(200).json(game);
+      })
       .catch(err => res.status(400).json(err));
   });
 

@@ -34,6 +34,16 @@ VotesDAO.prototype.savePlayerVote = function savePlayerVote(gameId, nick, amount
   });
 };
 
+VotesDAO.prototype.getPlayersVotes = function getPlayersVotes(gameId) {
+  return new Promise((resolve, reject) => {
+    this._connection.query('SELECT * FROM votes WHERE game_id = ?', [gameId], (err, result) => {
+      if (err) return reject(err);
+
+      return resolve(result);
+    });
+  });
+};
+
 // eslint-disable-next-line func-names
 module.exports = function () {
   return VotesDAO;

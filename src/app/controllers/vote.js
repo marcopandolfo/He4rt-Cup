@@ -26,4 +26,15 @@ module.exports = (app) => {
 
     return res.status(200).json(votes);
   });
+
+  // GET
+  app.get('/votes/players/:gameId', (req, res) => {
+    const { gameId } = req.params;
+
+    getVotesDao()
+      .getPlayersVotes(gameId)
+      .then(result => res.status(200).json(result))
+      .catch(err => res.status(400).json(err));
+
+  });
 };
