@@ -12,6 +12,8 @@ const createTables = (connection) => {
     description VARCHAR(428) NOT NULL,
     blue_votes int(48) DEFAULT 0,
     red_votes int(48) DEFAULT 0,
+    blue_points INT(48) DEFAULT 0,
+    red_points INT(48) DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     timer TIME NOT NULL,
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
