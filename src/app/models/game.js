@@ -1,6 +1,5 @@
 class Game {
   constructor(body) {
-    this.gameId = body.game_id;
     this.state = body.state;
     this.description = body.description;
     this.blueVotes = '';

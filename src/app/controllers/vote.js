@@ -11,7 +11,7 @@ module.exports = (app) => {
     const { nick, team, amount, game_id } = req.body;
 
     // TODO: validate
-    getVotesDao().incrementVotes(team, game_id);
+    await getVotesDao().incrementVotes(team, game_id);
     getVotesDao().savePlayerVote(game_id, nick, amount, team);
     const votes = await getVotesDao().getVotes(game_id);
     votes.game_id = game_id;
@@ -21,7 +21,7 @@ module.exports = (app) => {
 
   // GET
   app.get('/votes/:gameId', async (req, res) => {
-    const { gameId } = req.body.params;
+    const { gameId } = req.params;
     const votes = await getVotesDao().getVotes(gameId);
 
     return res.status(200).json(votes);

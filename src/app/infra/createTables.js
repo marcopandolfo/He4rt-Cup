@@ -1,8 +1,7 @@
 const createTables = (connection) => {
   connection.query(`
   CREATE TABLE IF NOT EXISTS game (
-    id int(10) NOT NULL auto_increment,
-    game_id INT(48) NOT NULL,
+    game_id INT(48) NOT NULL auto_increment,
     state VARCHAR(48) NOT NULL,
     player_css_red VARCHAR(256) NOT NULL,
     player_css_blue VARCHAR(256) NOT NULL,
@@ -13,7 +12,9 @@ const createTables = (connection) => {
     description VARCHAR(428) NOT NULL,
     blue_votes int(48) DEFAULT 0,
     red_votes int(48) DEFAULT 0,
-    PRIMARY KEY( id )
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
+    PRIMARY KEY( game_id )
   );
   CREATE TABLE IF NOT EXISTS votes (
     id int(10) NOT NULL auto_increment,

@@ -16,7 +16,7 @@ module.exports = (app) => {
     const game = new Game(req.body);
     getGameDao()
       .create(game)
-      .then(() => res.status(201).json(game))
+      .then(result => res.status(201).json({ game_id: result.insertId }))
       .catch(err => res.status(400).json(err));
   });
 
@@ -54,6 +54,5 @@ module.exports = (app) => {
       .updateState(game_id, state)
       .then(() => res.status(200).send())
       .catch(err => res.status(400).json(err));
-
   });
 };
