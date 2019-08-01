@@ -13,6 +13,7 @@ const createTables = (connection) => {
     blue_votes int(48) DEFAULT 0,
     red_votes int(48) DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    timer TIME NOT NULL,
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
     PRIMARY KEY( game_id )
   );

@@ -1,9 +1,11 @@
 class Game {
   constructor(body) {
+    this.timer = body.timer;
     this.state = body.state;
     this.description = body.description;
     this.blueVotes = '';
     this.redVotes = '';
+
 
     // Players
     this.playerCSSRed = body.player_css_red;

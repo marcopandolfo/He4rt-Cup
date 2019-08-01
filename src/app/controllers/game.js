@@ -46,6 +46,16 @@ module.exports = (app) => {
       .catch(err => res.status(400).json(err));
   });
 
+  // GET
+  app.get('/game/:gameId', (req, res) => {
+    const { gameId } = req.params;
+
+    getGameDao()
+      .getGame(gameId)
+      .then(game => res.status(200).json(game))
+      .catch(err => res.status(400).json(err));
+  });
+
   app.post('/game/updateState', (req, res) => {
     const { game_id, state } = req.body;
 

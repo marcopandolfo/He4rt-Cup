@@ -7,11 +7,11 @@ GameDAO.prototype.create = function create(game) {
   return new Promise((resolve, reject) => {
     this._connection.query(`
     INSERT INTO game
-    (state, player_css_blue, player_css_red, player_html_blue, player_html_red, player_js_blue, player_js_red, description)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    (state, player_css_blue, player_css_red, player_html_blue, player_html_red, player_js_blue, player_js_red, description, timer)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [game.state, game.playerCSSBlue, game.playerCSSRed,
       game.playerHTMLBlue, game.playerHTMLRed, game.playerJSBlue,
-      game.playerJSRed, game.description],
+      game.playerJSRed, game.description, game.timer],
     (err, result) => {
       if (err) return reject(err);
 
@@ -43,6 +43,16 @@ GameDAO.prototype.updatePlayer = function updatePlayer(gameId, team, lang, playe
 GameDAO.prototype.updateState = function updateState(gameId, state) {
   return new Promise((resolve, reject) => {
     this._connection.query('UPDATE game SET state = ? WHERE game_id = ?', [state, gameId], (err, result) => {
+      if (err) return reject(err);
+
+      return resolve(result);
+    });
+  });
+};
+
+GameDAO.prototype.getGame = function getGame(gameId) {
+  return new Promise((resolve, reject) => {
+    this._connection.query('SELECT * FROM game WHERE game_id = ?', [gameId], (err, result) => {
       if (err) return reject(err);
 
       return resolve(result);
