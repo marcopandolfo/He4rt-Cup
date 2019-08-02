@@ -2,10 +2,8 @@
 const Game = require('../models/game');
 
 module.exports = (app) => {
-  const getGameDao = () => {
-    const connection = app.infra.connectionFactory();
-    return new app.Dao.GameDAO(connection);
-  };
+  const connection = app.infra.connectionFactory();
+  const gameDao = new app.Dao.GameDAO(connection);
 
 
   // POST: Create new Game
@@ -14,7 +12,7 @@ module.exports = (app) => {
     // TODO: validate
 
     const game = new Game(req.body);
-    getGameDao()
+    gameDao
       .create(game)
       .then(result => res.status(201).json({ game_id: result.insertId }))
       .catch(err => res.status(400).json(err));
@@ -25,7 +23,7 @@ module.exports = (app) => {
     const { game_id, description } = req.body;
 
     // TOOD: validate
-    getGameDao()
+    gameDao
       .updateDescription(description, game_id)
       .then(() => res.status(200).send())
       .catch(err => res.status(400).json(err));
@@ -40,7 +38,7 @@ module.exports = (app) => {
 
     // TOOD: validate
 
-    getGameDao()
+    gameDao
       .updatePlayer(game_id, team, lang, player)
       .then(() => res.status(200).send())
       .catch(err => res.status(400).json(err));
@@ -50,7 +48,7 @@ module.exports = (app) => {
   app.get('/game/:gameId', (req, res) => {
     const { gameId } = req.params;
 
-    getGameDao()
+    gameDao
       .getGame(gameId)
       .then((game) => {
         console.log('[GET GAME]');
@@ -63,7 +61,7 @@ module.exports = (app) => {
     const { game_id, state } = req.body;
 
     // TOOD: validate
-    getGameDao()
+    gameDao
       .updateState(game_id, state)
       .then(() => res.status(200).send())
       .catch(err => res.status(400).json(err));

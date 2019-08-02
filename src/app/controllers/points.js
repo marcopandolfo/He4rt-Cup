@@ -1,17 +1,14 @@
 /* eslint-disable camelcase */
 module.exports = (app) => {
-  const getPointsDao = () => {
-    const connection = app.infra.connectionFactory();
-    return new app.Dao.PointsDAO(connection);
-  };
-
+  const connection = app.infra.connectionFactory();
+  const pointsDao = new app.Dao.PointsDAO(connection);
 
   app.post('/points', async (req, res) => {
     const { game_id, team } = req.body;
 
     // TODO: validate
-    await getPointsDao().incrementPoints(team, game_id);
-    const points = await getPointsDao().getPoints(game_id);
+    await pointsDao.incrementPoints(team, game_id);
+    const points = await pointsDao.getPoints(game_id);
 
     points.game_id = game_id;
     return res.status(200).json(points);
@@ -22,7 +19,7 @@ module.exports = (app) => {
 
     // TODO: validate
 
-    getPointsDao()
+    pointsDao
       .getPoints(gameId)
       .then(points => res.status(200).json(points))
       .catch(err => res.status(400).json(err));

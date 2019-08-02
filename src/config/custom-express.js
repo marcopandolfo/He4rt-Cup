@@ -1,7 +1,7 @@
 const express = require('express');
 const consign = require('consign');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
 require('dotenv').config();
 
 // App
@@ -21,8 +21,8 @@ if (process.platform === 'linux') rootPath = 'src/app';
 // Consign
 consign({ cwd: rootPath })
   .include('infra')
-  .then('controllers')
   .then('Dao')
+  .then('controllers')
   .into(app);
 
 module.exports = app;
