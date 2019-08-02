@@ -31,7 +31,7 @@ module.exports = (app) => {
       .catch(err => res.status(400).json(err));
   });
 
-  app.post('/game/updatePlayer', (req, res) => {
+  app.put('/game/updatePlayer', (req, res) => {
     const {
       game_id,
       team, lang,
@@ -59,7 +59,7 @@ module.exports = (app) => {
       .catch(err => res.status(400).json(err));
   });
 
-  app.post('/game/updateState', (req, res) => {
+  app.put('/game/updateState', (req, res) => {
     const { game_id, state } = req.body;
 
     // TOOD: validate

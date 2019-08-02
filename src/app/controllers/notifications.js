@@ -8,10 +8,6 @@ module.exports = (app) => {
 
     sendWhisper(nick, `Seu código de verificação do Discord é ${code}`);
 
-    return res.status(200).json({
-      msg: 'Whisper sent',
-      nick,
-      code,
-    });
+    return res.status(200).send();
   });
 };
