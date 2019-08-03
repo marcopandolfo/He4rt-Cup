@@ -6,6 +6,7 @@ class Game {
     this.blueVotes = '';
     this.redVotes = '';
 
+    // challenges for default is none
 
     // Players
     this.playerCSSRed = body.player_css_red;
