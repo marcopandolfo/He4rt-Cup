@@ -4,6 +4,7 @@ const Game = require('../models/game');
 module.exports = (app) => {
   const connection = app.infra.connectionFactory();
   const gameDao = new app.Dao.GameDAO(connection);
+  const challengesDao = new app.Dao.ChallengesDAO(connection);
 
 
   // POST: Create new Game
@@ -14,7 +15,10 @@ module.exports = (app) => {
     const game = new Game(req.body);
     gameDao
       .create(game)
-      .then(result => res.status(201).json({ game_id: result.insertId }))
+      .then((result) => {
+        challengesDao.create(result.insertId);
+        return res.status(201).json({ game_id: result.insertId });
+      })
       .catch(err => res.status(400).json(err));
   });
 
