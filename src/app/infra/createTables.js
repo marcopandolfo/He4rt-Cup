@@ -35,9 +35,15 @@ const createTables = (connection) => {
     challenge_1 VARCHAR(256) DEFAULT 'none',
     challenge_2 VARCHAR(256) DEFAULT 'none',
     challenge_3 VARCHAR(256) DEFAULT 'none',
-    challenge_1_checked BOOL DEFAULT false,
-    challenge_2_checked BOOL DEFAULT false,
-    challenge_3_checked BOOL DEFAULT false
+
+    challenge_1_checked_red BOOL DEFAULT false,
+    challenge_2_checked_red BOOL DEFAULT false,
+    challenge_3_checked_red BOOL DEFAULT false,
+
+    challenge_1_checked_blue BOOL DEFAULT false,
+    challenge_2_checked_blue BOOL DEFAULT false,
+    challenge_3_checked_blue BOOL DEFAULT false
+
     PRIMARY KEY( id )
   );
   `, (err) => {
