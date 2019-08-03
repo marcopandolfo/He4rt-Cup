@@ -27,6 +27,19 @@ const createTables = (connection) => {
     team VARCHAR(48) NOT NULL,
     PRIMARY KEY( id )
   );
+
+  CREATE TABLE IF NOT EXISTS challenges (
+    id int(10) NOT NULL auto_increment,
+    game_id int(48) NOT NULL,
+    challenge VARCHAR(256) DEFAULT 'none',
+    challenge_1 VARCHAR(256) DEFAULT 'none',
+    challenge_2 VARCHAR(256) DEFAULT 'none',
+    challenge_3 VARCHAR(256) DEFAULT 'none',
+    challenge_1_checked BOOL DEFAULT false,
+    challenge_2_checked BOOL DEFAULT false,
+    challenge_3_checked BOOL DEFAULT false
+    PRIMARY KEY( id )
+  );
   `, (err) => {
     if (err) {
       throw err;
